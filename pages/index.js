@@ -18,7 +18,7 @@ let id = GetID();
 export default function Home() {
   function start(){
       var playerid = document.getElementById("playernum").value;
-      if(!(playerid >=0 && playerid <=13)) return;
+      if(!(playerid >=1 && playerid <=14)) return;
       else {
         /*Set("PLAYERID",playerid);*/
         Init(playerid);
