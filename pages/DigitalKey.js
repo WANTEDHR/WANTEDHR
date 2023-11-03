@@ -52,6 +52,10 @@ export default function Home() {
         if (!ITEMUNLCOKED[2]){
             return;
         }
+        else{
+            var x=document.getElementById(styles.displayans);
+            x.style.display="block"
+        }
         if (digitalcleared) return;
         trynum = 3;
         started = true;
@@ -237,7 +241,6 @@ export default function Home() {
 
     }
 
-
     return (
 
 
@@ -280,6 +283,11 @@ export default function Home() {
             <div>
                 <button onClick={start} id="startbtn" className={styles.Camerabtn}>暗号解読を始める</button>
                 <p id="succes" className={styles.LOCKED}>LOCKED</p>
+
+            </div>
+            <div className={styles.displaytex}>これに合わせろ！
+            </div>
+            <div id={styles.displayans}>
 
             </div>
             <div className={styles.buttons}>
