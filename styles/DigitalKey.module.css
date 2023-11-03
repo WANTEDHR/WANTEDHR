@@ -1,11 +1,11 @@
 .container{
 
-  width:1366px;
-  height:798px;
+  width:100vw;
+  height:100vh;
   background-image: url("/gear.gif");
   background-size: cover;
   background-repeat : no-repeat;
-  }
+}
 
 
   .Initbtn{
