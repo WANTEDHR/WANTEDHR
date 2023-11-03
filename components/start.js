@@ -93,6 +93,6 @@ export async function Init(playerid) {
     console.log(id+"consts");
     var consts=await kv.get(id+"consts");
     console.log(consts)
-    //document.location.href = "/playername";
+    document.location.href = "/playername";
     
 }
