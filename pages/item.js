@@ -62,7 +62,7 @@ function openmails(eve){
 
 
 let itemfl=[false,false,false,false,false,false,false,false,false,false,false,false];
-itemfl=[true,true,true,true,false,false,false,true,true,true,true,true];
+itemfl=[true,true,true,true,true,true,true,true,true,true,true,true];
 let discri=[
     ["レコーダー","recoder",'/recoder.png',"Aの所持品と思われる黒色のレコーダー。幾つかデータが入ってるようだ。"],
     ["日記","diary",'/diary.png',"Aの名前がついている日記。これを読めばAの所在地がわかるかもしれない。"],
