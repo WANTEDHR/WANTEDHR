@@ -29,7 +29,7 @@ function open3(num) {
   var x = document.getElementById("mystery");
   var y = document.getElementById("mysteryimg");
   document.getElementById("closeModal1").style.display = 'block';
-  y.src = "/" + string(num) + ".png";
+  y.src = "/" + String(num) + ".png";
   clickednum += 1;
   x.style.display = 'block';
 }
