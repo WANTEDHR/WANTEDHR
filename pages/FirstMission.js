@@ -38,7 +38,7 @@ function open3(num) {
 
 
 var PlayerID=await kv.get(id+"PlayerID");
-
+PlayerID -= 1;
 /* */
 
 /*var CLEAREDFUZE = false;
@@ -158,6 +158,7 @@ var groups = [
   [25, 27, 29],
   [30, 31, 32],
   [28, 33, 35],
+  [37,39,41],
   [6, 36, 45],
   [34, 43, 44],
   [15, 19, 20]
