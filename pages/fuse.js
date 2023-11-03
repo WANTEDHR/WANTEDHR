@@ -14,7 +14,13 @@ let id = GetID();
 
 var dx = [0, -1, 0, 1];
 var dy = [1, 0, -1, 0];
-var fuzecleared = false;
+
+
+var firstsolved=await kv.get(id+"firstsolved");
+console.log(firstsolved);
+var PlayerID=await kv.get(id+"PlayerID");
+
+var fuzecleared = firstsolved[1];
 /*
 fuzecleared = await kv.get(id + "CLEAREDFUZE");
 console.log(fuzecleared);
@@ -52,11 +58,10 @@ export default function Home() {
 
 
   ]
-  function Ontap(e) {
+  async function Ontap(e) {
     if (fuzecleared) {
       document.getElementById("cleared").textContent = "UNLOCKED";
       return;
-
     }
     var d = e.target.id;
     var Kairo = document.getElementById(d);
@@ -114,14 +119,24 @@ export default function Home() {
       }
     }
     if (KeyPath[Keytype[0][4] - 1][(-1 * KeyRotate[0][4] + 4) % 4] && KeyOpen[0][4]) {
+      var firstsolved=await kv.get(id+"firstsolved");
+      firstsolved[1]=true;
+      Set("firstsolved",firstsolved)
+      console.log(firstsolved);
       fuzecleared = true;
+
       /*Set("CLEAREDFUZE",fuzecleared);*/
       document.getElementById("cleared").textContent = "UNLOCKED";
 
       document.getElementById("cleared").style.color = "green";
     }
   }
-  function start() {
+  async function start() {
+    var ITEMUNLCOKED=await kv.get(id+"ITEMUNLCOKED");
+    console.log(ITEMUNLCOKED);
+    if (!ITEMUNLCOKED[1]){
+      return;
+    }
     document.getElementById("background").style.backgroundImage = "url(/fuseon.png)";
     for (var i = 0; i < 5; i++) {
       for (var j = 0; j < 5; j++) {
