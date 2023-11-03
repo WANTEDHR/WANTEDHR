@@ -2,12 +2,6 @@ import Link from 'next/link';
 import styles from '../styles/item.module.css';
 import Image from "next/image";
 import { useEffect } from 'react'
-import { createClient } from '@vercel/kv';
-let kv = createClient({
-  url: process.env.NEXT_PUBLIC_KV_REST_API_URL,
-  token: process.env.NEXT_PUBLIC_KV_REST_API_TOKEN
-});
-
 var lettertexts=[
   "\n10/25(水)\n\n明日は大雨みたいですね。残念です。ところで、\n日曜に家を出て行ったきり、\n私の猫が帰ってきません。\nのら猫になっていないか心配です。\n家族の一員なので、気が気でありません。\nにている猫がいたら、教えてください。\n",
   "\n10/20(金)\n\nおかげさまで、おととい猫が帰ってきました。\n私は昨日から1週間の帰省をしているので、それまでに帰って来てくれて良かったわ。\n帰ってきたのは嬉しかったのですが、太って体重が2倍になっていてびっくりです。猫は野生化すると太るものなのでしょうか。\nあと、となりの304号室の村田さんって覚えてる？ \n ほら、あなたが小さい頃、たまに面倒をみててくれた人。 \nどうやら再来月あたりに引っ越しちゃうそうで、一度挨拶しておかない？",
