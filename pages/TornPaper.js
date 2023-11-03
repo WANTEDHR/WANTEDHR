@@ -37,7 +37,8 @@ export default function Home() {
     }
   }
 
-  function start() {
+  async function start() {
+    var ITEMUNLCOKED=await kv.get(id+"ITEMUNLCOKED");
     console.log(ITEMUNLCOKED);
     if (!ITEMUNLCOKED[0]){
       return;
