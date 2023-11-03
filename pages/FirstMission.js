@@ -38,7 +38,7 @@ function open3(num) {
 
 
 var PlayerID=await kv.get(id+"PlayerID");
-PlayerID -= 1;
+PlayerID = PlayerID - 1;
 /* */
 
 /*var CLEAREDFUZE = false;
