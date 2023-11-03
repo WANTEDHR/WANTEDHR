@@ -4,7 +4,6 @@ import styles from '../styles/DigitalKey.module.css';
 import { SearchData } from '../components/MainProgram';
 import Link from 'next/link';
 import { createClient } from '@vercel/kv';
-import {Set2} from '../components/func'
 let kv = createClient({
     url: process.env.NEXT_PUBLIC_KV_REST_API_URL,
     token: process.env.NEXT_PUBLIC_KV_REST_API_TOKEN
@@ -12,14 +11,12 @@ let kv = createClient({
 
 import { Set, GetID } from '../components/func';
 let id = GetID();
+
 /*
 fuzecleared = await kv.get(id + "CLEAREDIGITALKEY");
 console.log(fuzecleared);
+
 */
-
-
-
-
 export default function Home() {
 
     var DigitalKeybool = [
@@ -46,12 +43,8 @@ export default function Home() {
     var started = false;
     var trynum = 0;
     var digitalcleared = false;
-    async function start() {
-        var ITEMUNLCOKED=await kv.get(id+"ITEMUNLCOKED");
-        console.log(ITEMUNLCOKED);
-        if (!ITEMUNLCOKED[2]){
-            return;
-        }
+    function start() {
+
         if (digitalcleared) return;
         trynum = 3;
         started = true;
@@ -78,7 +71,7 @@ export default function Home() {
         }
     }
 
-    async function Ontap(place) {
+    function Ontap(place) {
         if (digitalcleared || started == false) return;
         trynum--;
 
@@ -188,9 +181,6 @@ export default function Home() {
         console.log(DigitalKeybool);
         console.log(did);
         if (did) {
-            var firstsolved=await kv.get(id+"firstsolved");
-            firstsolved[2]=true;
-            Set("firstsolved",firstsolved)
             var x = document.getElementById("succes");
             document.getElementById("succes").innerHTML = "UNLOCKED";
             digitalcleared = true;

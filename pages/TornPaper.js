@@ -16,21 +16,11 @@ let id = GetID();
 var clearedtorn = false;
 /*clearedtorn = await kv.get(id + "CLEAREDTORNPAPER"); */
 
-var consts=await kv.get(id+"consts");
-
-
-var ITEMUNLCOKED=await kv.get(id+"ITEMUNLCOKED");
-
 export default function Home() {
 
-  async function answer() {
+  function answer() {
     var ans = document.getElementById("inputbox").value;
-    console.log(1);
-    if (ans == consts["tornpaperans"]) {
-      console.log(1);
-      var firstsolved=await kv.get(id+"firstsolved");
-      firstsolved[0]=true;
-      Set("firstsolved",firstsolved)
+    if (ans == "714283") {
       document.getElementById("cleared").innerHTML = "UNLOCKED";
       /* Set("CLEAREDTORN",clearedtorn); */
       document.getElementById("cleared").style.color = "green";
@@ -38,10 +28,7 @@ export default function Home() {
   }
 
   function start() {
-    console.log(ITEMUNLCOKED);
-    if (!ITEMUNLCOKED[0]){
-      return;
-    }
+
     document.getElementById('btn0').src = "/KEYCODE1.png";
     document.getElementById('btn1').src = "/KEYCODE2.png";
     document.getElementById('btn2').src = "/KEYCODE3.png";

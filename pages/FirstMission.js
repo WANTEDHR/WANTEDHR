@@ -14,9 +14,11 @@ var clickednum = 0;
 function plus() {
   clickednum += 1;
 }
+
 import { Set, GetID } from '../components/func';
 let id = GetID();
-console.log(id);
+
+
 function close3() {
   var x = document.getElementById("mystery");
   x.style.display = 'none'
@@ -29,16 +31,13 @@ function open3(num) {
   var x = document.getElementById("mystery");
   var y = document.getElementById("mysteryimg");
   document.getElementById("closeModal1").style.display = 'block';
-  y.src = "/" + String(num) + ".png";
+  y.src = "/" + num + ".png";
   clickednum += 1;
   x.style.display = 'block';
 }
 //PlayerIDで解くべき問題と結びつける。
-
-
-
-var PlayerID=await kv.get(id+"PlayerID");
-
+var PlayerID = 5;
+var ITEMUNLCOKED = [false, false, false];
 /* */
 
 /*var CLEAREDFUZE = false;
@@ -50,7 +49,7 @@ Set("CLEAREDTORNPAPER", CLEAREDTORNPAPER);
 Set("ITEMUNLCOKED",ITEMUNCLOKED);
 */
 
-//var Item = ["紙切れ", "ヒューズ", "ドット絵"];
+var Item = ["紙切れ", "ヒューズ", "ドット絵"];
 
 var FirstMissionNazo = {
   "アメリカ": 1, "あめりか": 3,
@@ -198,16 +197,6 @@ function close2() {
   x.style.display = 'None';
 }
 
-async function isopen(){
-  var firstsolved=await kv.get(id+"firstsolved");
-  console.log(firstsolved);
-  if (firstsolved[0] && firstsolved[1] && firstsolved[2]){
-    console.log(1);
-    var x=document.getElementById("openloc");
-    x.href="/openlocker"
-    document.location.href="/openlocker"
-  }
-}
 
 export default function Home() {
 
@@ -221,12 +210,13 @@ export default function Home() {
 
 
 
-  async function OnSearch() {
+  function OnSearch() {
 
 
  
 
     var SearchedWord = document.getElementById("SearchBox").value;
+    console.log(SearchedWord);
     var SearchData_keys = Object.keys(FirstMissionNazoID);
     var ReturnWord = SearchData_keys.find(function (value) {
       return value == SearchedWord;
@@ -265,14 +255,12 @@ export default function Home() {
           open2();
           console.log(3);
         }
-    var ITEMUNLCOKED=await kv.get(id+"ITEMUNLCOKED");
-    ITEMUNLCOKED[FirstMissionNazo[SearchedWord]-1] = true;
-    Set("ITEMUNLCOKED",ITEMUNLCOKED)
+    ITEMUNLCOKED[FirstMissionNazo[SearchedWord]] = true;
+    Set("ITEMUNLCOKED", ITEMUNLCOKED);
 
   };
 
   function a() {
-    close3()
     clickednum++;
     const video = document.createElement('video');
     const canvasElement = document.getElementById('canvas');
@@ -303,10 +291,7 @@ export default function Home() {
         });
         if (code && !isReadQR) {
           if (code.data > 0 && code.data <= 45) {
-            var x=code.data;
-            if (groups[PlayerID][0]==x || groups[PlayerID][1]==x ||groups[PlayerID][2]==x){
-              open3(code.data);
-            }
+            open3(code.data);
           }
           isReadQR = false;
         }
@@ -352,7 +337,7 @@ export default function Home() {
             </Link>
           </div>
           <div className={styles.btnbox}>
-            <Link href="/FirstMission"onClick={() =>{plus();isopen()}} id="openloc" className={styles.btn}>
+            <Link href="/openlocker" onClick={plus} className={styles.btn}>
               <div class={styles.btnname}>　ロッカー</div>
               <div class={styles.btncolor}></div>
             </Link>
@@ -388,25 +373,25 @@ export default function Home() {
 
       <div id="modal" className={styles.modal}>
 
-        <img id="ItemImage" className={styles.ItemImage1} src="/KEYCODES.png" />
+        <img id="ItemImage" className={styles.ItemImage} src="/KEYCODES.png" />
         <span id="closeModal" className={styles.closeModal} onClick={close}>&times;</span>
 
         <p id="ItemGet" className={styles.Model_text}>複数の紙切れを見つけた</p>
       </div>
-      <div id="modal1" className={styles.modal}>
+      <div id="modal1" className={styles.modal1}>
 
-        <img id="ItemImage1" className={styles.ItemImage} src="/fuse.png" />
+        <img id="ItemImage1" className={styles.ItemImage1} src="/fuse.png" />
         <span id="closeModal" className={styles.closeModal} onClick={close1}>&times;</span>
 
-        <p id="ItemGet1" className={styles.Model_text}>ヒューズを見つけた</p>
+        <p id="ItemGet1" className={styles.Model_text1}>ヒューズを見つけた</p>
       </div>
-      <div id="modal2" className={styles.modal}>
+      <div id="modal2" className={styles.modal1}>
 
-        <img id="ItemImage2" className={styles.ItemImage} src="/DotPic.png" />
+        <img id="ItemImage2" className={styles.ItemImage2} src="/DotPic.png" />
         <span id="closeModal" className={styles.closeModal} onClick={close2}>&times;</span>
 
         
-        <p id="ItemGet2" className={styles.Model_text}>ドット絵を見つけた</p>
+        <p id="ItemGet2" className={styles.Model_text2}>ドット絵を見つけた</p>
       </div>
       </div>
       
